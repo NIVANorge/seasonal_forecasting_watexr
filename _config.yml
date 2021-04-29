@@ -13,3 +13,6 @@ include:
   - CONTRIBUTING.md
   - ISSUE_TEMPLATE.md
   - PULL_REQUEST_TEMPLATE.md
+
+title: [WATExR]
+description: [Seasonal forecasting to support freshwater management]
