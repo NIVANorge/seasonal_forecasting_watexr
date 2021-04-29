@@ -1,4 +1,4 @@
-# R scripts
+# R scripts to download seasonal climate data using the Climate4R package
 
 ## Climate scripts
 
@@ -11,4 +11,4 @@
   
 These scripts are tailored to follow the workflow shown in the figure below:
 
-<img src="/figs/fig_hindcast_workflow_UNICAN.jpg" />
+<img src="/Images/fig_hindcast_workflow_UNICAN.jpg" />
