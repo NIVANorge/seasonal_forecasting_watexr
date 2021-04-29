@@ -28,27 +28,27 @@ Statistical and process-based models were used to produce seasonal forecasts for
 
 Click on the case study headers for more information about the individual sites and to access the user-friendly forecasting interfaces developed.
 
-## [Mount Bold reservoir, Southern Autralia](https://nivanorge.github.io/seasonal_forecasting_watexr/)
+## [Mount Bold reservoir, Southern Autralia](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/Australia_MtBold#readme)
 **The challenge**: Improve management of the largest reservoir in South Australia to reduce pumping costs and improve water quality.
 
 **Developer and co-developer**: [Dundalk Institute of Technology](https://www.dkit.ie/), [SA Water](https://www.sawater.com.au/) and [University of Adelaide](https://www.adelaide.edu.au/)
 
-## [Burrishoole catchment, Ireland](https://nivanorge.github.io/seasonal_forecasting_watexr/)
+## [Burrishoole catchment, Ireland](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/Ireland.md)
 **The challenge**: Better understanding and management of diadromous fish stocks, in particular the timing of fish migration.
 
 **Developer and co-developer**: [Marine Institute](https://www.marine.ie/Home/home)
 
-## [Sau reservoir, Spain](https://nivanorge.github.io/seasonal_forecasting_watexr/)
+## [Sau reservoir, Spain](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/Spain.md)
 **The challenge**: Improved reservoir management to reduce flooding and improve water quality for drinking water and to meet ecological targets.
 
 **Developer and co-developer**: ICRA, [Catalan Water Agency](http://aca.gencat.cat/ca/inici)
 
-## [Lake Vansjø, Norway](https://nivanorge.github.io/seasonal_forecasting_watexr/)
+## [Lake Vansjø, Norway](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/Norway_Morsa/README.md)
 **The challenge**: Manage lake water levels and farming practices in the catchment to improve water quality and achieve water quality and ecology targets, including prevention of toxic cyanobacterial blooms.
 
 **Developer and co-developer**: Norwegian Institute for Water Research (NIVA), [Morsa](http://morsa.org/)
 
-## [Wupper reservoir, Germany](https://nivanorge.github.io/seasonal_forecasting_watexr/)
+## [Wupper reservoir, Germany](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/Germany.md)
 **The challenge**: Improved reservoir operations to meet requirements for flood protection, recreation and improved water quality both in the reservoir and downstream.
 
 **Developer and co-developer**: UFZ, [WUPPERVERBAND](https://www.wupperverband.de/internet/web.nsf/id/pa_startseite.html)
