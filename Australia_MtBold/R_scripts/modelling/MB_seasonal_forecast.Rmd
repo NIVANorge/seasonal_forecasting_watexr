@@ -1,0 +1,333 @@
+---
+title: "Running seasonal predictions for Mt. Bold"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+Introduction:
+Mt. Bold is a reservoir located at...
+
+
+Step 1. Load in data
+```{r}
+library(visualizeR)
+
+lat = 7.3
+lon = 51.2
+
+# Step 1. Load up the catchment model
+param = c(3154.353493,-1117.839156,141.213475,2.024065)
+catch.size <- 214.7
+
+dir <- "C:\\Users\\mooret\\OneDrive - Dundalk Institute of Technology\\WateXr\\Santander\\SCF_GOTM_Santander\\to_send\\output\\WET"
+setwd(dir)
+
+#Select obs and mod files required for running the model
+obs.files <- list.files(dir)[grep('PIK_Obs',list.files(dir))]
+mod.files <- list.files(dir)[grep('System4',list.files(dir))]
+
+#Load example obs file for structure
+obs.samp <- get(load("C:\\Users\\mooret\\OneDrive - Dundalk Institute of Technology\\WateXr\\Santander\\SCF_GOTM_Santander\\to_send\\test2/testPIK_Obs-EWEMBI_1_2_3_4_5_6_7_8_9_10_11_12_uas_vas_ps_tas_hurs_pr_rsds_rlds_cc_petH.rda"))
+
+#Load example hindcast file for structure - especiall members
+hind.samp <- get(load("C:\\Users\\mooret\\OneDrive - Dundalk Institute of Technology\\WateXr\\Santander\\SCF_GOTM_Santander\\to_send\\test2/System4_seasonal_15_11_12_1_2_uas_vas_ps_tas_hurs_pr_rsds_rlds_cc_petH_BC.rda"))
+
+#Load example hindcast file for structure - especiall members
+mod.samp <- get(load("C:\\Users\\mooret\\OneDrive - Dundalk Institute of Technology\\WateXr\\Santander\\SCF_GOTM_Santander\\to_send\\test2/interim075_WATExR_1_2_3_4_5_6_7_8_9_10_11_12_uas_vas_ps_tas_hurs_pr_rsds_rlds_cc_petH_BC.rda"))
+
+#Plot the data
+temporalPlot(hind.samp$uas)
+Qobs <- obs.samp$uas
+Qobs$Variable$varName <- 'Qobs'
+```
+
+GOTM pre-processing
+
+```{r}
+library(gotmtools)
+use_nml = FALSE
+#GOTM preprocessing
+gotm_dir <- "C:\\Users\\mooret\\OneDrive - Dundalk Institute of Technology\\WateXr\\Santander\\SCF_GOTM_Santander\\to_send\\output\\GOTM_example"
+setwd(gotm_dir)
+if(use_nml){
+  input_nml(val = 'meteo_fc.dat',nml = 'airsea',par = 'meteo_file')
+  input_nml(val = 'swr_fc.dat',nml = 'airsea',par = 'swr_file')
+  input_nml(val = 'pre_fc.dat',nml = 'airsea',par = 'meteo_file')
+  input_nml(val = 1,nml = 'airsea',par = 'hum_method')
+}else{
+  message('Using gotm.yaml...')
+}
+
+out.file = 'output.nc'
+
+#Identify seasons of focus
+season = c(12,1,2)
+syears = 1984:1987 #Years of focus for seasonal forecast
+members = 1:15
+Qobsv <- NULL #Empty vector to be filled in for loop
+stempv <- NULL
+Qdatesv <- NULL #Empty vector to be filled in for loop
+```
+
+Loop through each season and run the models
+
+```{r}
+library(airGR)
+library(lubridate)
+#Loop through each of the obs file and run the model with each
+for(i in syears){
+  obfil <- obs.files[grep(paste0(i,'.dat'),obs.files)]
+  setwd(dir)
+  dat = read.delim(obfil, header =T, stringsAsFactors = F) #Read in file
+  gr4 <- dat[,c(1,8,12)] #Select neccessary columns for model 
+  gr4[,1] <- as.POSIXct(gr4[,1], tz = 'UTC') #Format as.POSIXct
+  
+  if(use_nml){
+    met <- dat[,c(1:7,11)] #Select neccessary columns for model 
+    swr <- dat[,c(1,2,9)]
+    pre <- dat[,c(1,2,8)]
+    pre[,3] <- pre[,3] * 1.15741e-8    
+  }else{
+    met <- dat[,c(1:7,11,9,8)] #Select neccessary columns for model 
+    met$pr <- met$pr * 1.15741e-8
+    }
+
+  
+  setwd(gotm_dir)
+  
+  #Create inputs for GOTM
+  met[,3:ncol(met)] <- signif(met[,3:ncol(met)],4)
+  if(use_nml){
+    write.table(met, 'meteo_fc.dat', row.names = F, col.names = F, quote = F, sep = ' ')
+    write.table(swr, 'swr_fc.dat', row.names = F, col.names = F, quote = F, sep = ' ')
+    write.table(met, 'pre_fc.dat', row.names = F, col.names = F, quote = F, sep = ' ')
+  }else{
+    write.table(met, 'meteo_fc.dat', row.names = F, col.names = F, quote = F, sep = ' ')
+  }
+  
+  
+  #Create inputs for model
+  inputs <- CreateInputsModel(RunModel_GR4J, DatesR = gr4[,1], Precip = gr4[,2], PotEvap = gr4[,3])
+  opts <- CreateRunOptions(RunModel_GR4J, InputsModel = inputs,IndPeriod_Run = 1:nrow(gr4),IndPeriod_WarmUp = NULL)
+  
+  #Run the model
+  mod1 = RunModel_GR4J(InputsModel = inputs, RunOptions = opts, Param = param)
+  
+  #Convert model output to dataframe
+  Qdf <- data.frame(Date = mod1$DatesR, Qobs = mod1$Qsim)
+  Qdf$year <- year(Qdf$Date) #create year column
+  Qdf$month <- month(Qdf$Date) #create month column
+  
+  yrs = unique(unique(Qdf$year)) #Vector of unique years
+  
+  ## NEEDS CHECK
+  Qdf$flow <- (Qdf[,2] * catch.size *200000)/(60*60*24)
+  
+  flow <- Qdf[,c(1,5)]
+  flow[,1] <- format(flow[,1], '%Y-%m-%d %H:%M:%S')
+  write.table(flow, 'inflow_fc.dat', row.names = F, col.names = F, quote = F, sep = '\t')
+  
+  #Set start stop
+  dates <- scan_timeseries('meteo_fc.dat', sep = ' ')
+  start = dates[1]
+  stop = dates[2]
+  
+  # Set date for initial profile
+  tprof <- readLines('init_tprof.dat')
+  inset <- paste0(dates[1],'\t',(length(tprof)-1),' 1')
+  tprof[1] <- inset
+  writeLines(tprof, 'init_tprof.dat')
+  
+  if(use_nml){
+    input_nml(val = start,nml = 'gotmrun',par = 'start')
+    input_nml(val = stop,nml = 'gotmrun',par = 'stop')
+  }else{
+    input_yaml(file = 'gotm.yaml', label = 'time', key = 'start', start)
+    input_yaml(file = 'gotm.yaml', label = 'time', key = 'stop', stop)
+  }
+
+  #Run the model
+  run_gotm()
+  
+  temp <- get_vari(out.file, 'temp',print = F)[,1:2]
+  temp$year <- year(temp[,1])
+  temp$month <- month(temp[,1])
+  
+  #Subsetting seasonal forecast
+  if(12 %in% season){ #Winter
+    subdf = Qdf[(Qdf$year == yrs[length(yrs)] & Qdf$month %in% season |
+                   Qdf$year == yrs[length(yrs) - 1] & Qdf$month == 12),] 
+    tdf = temp[(temp$year == yrs[length(yrs)] & temp$month %in% season |
+                   temp$year == yrs[length(yrs) - 1] & temp$month == 12),] 
+  }else{ #rest of year
+    subdf = Qdf[(Qdf$year == yrs[length(yrs)] & Qdf$month %in% season),]
+    tdf = temp[(temp$year == yrs[length(yrs)] & temp$month %in% season),]
+  }
+  
+  #Output to vectors
+  Qdatesv <- c(Qdatesv,as.character(subdf$Date))
+  Qobsv <- c(Qobsv,subdf$Qobs)
+  stempv <- c(stempv,tdf[,2])
+}
+```
+
+
+
+Place observed into similar format as gridded climate
+
+```{r}
+#Subsetting obs grid data to same time period as seasonal forecast
+if(12 %in% season){ #Winter
+  obs_Q_1 <- subsetGrid( obs.samp[[1]], years = (syears[1]-1), season = season[1])
+  #obs_Q_1 <- subsetGrid( obs.samp[[1]], years = syears[1], season = season[1])
+  obs_Q_2 <- subsetGrid( obs.samp[[1]], years = syears[1:(length(syears)-1)], season = season)
+  #obs_Q_2 <- subsetGrid( obs.samp[[1]], years = syears[2:(length(syears)-1)], season = season)
+  obs_Q_3 <- subsetGrid( obs.samp[[1]], years = syears[length(syears)], season = season[2:3])
+  
+#Bind grids by time
+obs_Q <- bindGrid(obs_Q_1, obs_Q_2, obs_Q_3, dimension = "time")
+}else{ #Rest of year
+  obs_Q <- subsetGrid( obs.samp$uas, years = syears, season = season)
+}
+temporalPlot(obs_Q)
+# str(obs_Q)
+
+obs_st <- obs_Q
+#Input obs data into 
+obs_st$Data <- as.array(stempv)
+attr(obs_st$Data,which = "dimensions") <- 'time'
+
+
+attr(obs_st$Variable,which = "description") <- 'Surface Temp'
+attr(obs_st$Variable,which = "units") <- 'Celsius'
+attr(obs_st$Variable,which = "longname") <- 'Lake Surface temperature'
+temporalPlot(obs_st)
+
+#Input obs data into 
+arr = array(data = c(Qobsv, lat, lon), dim = c(length(Qobsv),1,1))
+attr(arr,which = "dimensions") <- c('time', 'lat', 'lon')
+obs_Q$Data <- arr
+
+
+attr(obs_Q$Variable,which = "description") <- 'Discharge'
+attr(obs_Q$Variable,which = "units") <- 'mm/day'
+attr(obs_Q$Variable,which = "longname") <- 'Discharge'
+# str(obs_Q)
+temporalPlot(obs_Q, xyplot.custom = list(ylim = c(0,0.08))) #careful of really small digits
+```
+
+Running the seasonal forecast for each of the members
+
+```{r}
+#Define periods - seasonal years as characters
+periods = as.character(syears)
+memnames = sprintf("%02d" ,members) #Member names for locating
+
+#Create empty list for populating the 15 members
+Qhindlist <- list()
+
+setwd(dir)
+
+#Loop through each
+for(j in periods){
+  #Select member files 
+  sub.files <- mod.files[grep(paste0(j,'.dat'),mod.files)]
+  for(i in memnames){ #Loop through the member files
+    Qobsv <- NULL #Set vector to NULL
+    k = which(i == memnames) #Number for positioning within the list
+    
+    fil <- sub.files[grep(paste0('member',i),sub.files)] #Select the member file
+    
+    dat = read.delim(fil, header =T, stringsAsFactors = F) #Read the file
+    dat <- dat[,c(1,8,12)] #Select 
+    dat[,1] <- as.POSIXct(dat[,1], tz = 'UTC') #Format dates
+    
+    #Run GR4J
+    inputs <- CreateInputsModel(RunModel_GR4J, DatesR = dat[,1], Precip = dat[,2], PotEvap = dat[,3])
+    opts <- CreateRunOptions(RunModel_GR4J, InputsModel = inputs,IndPeriod_Run = 1:nrow(dat),IndPeriod_WarmUp = NULL)
+    mod1 = RunModel_GR4J(InputsModel = inputs, RunOptions = opts, Param = param)
+    
+    #Extract modelled data
+    Qdf <- data.frame(Date = mod1$DatesR, Qobs = mod1$Qsim)
+    Qdf$year <- year(Qdf$Date)
+    Qdf$month <- month(Qdf$Date)
+    
+    yrs = unique(unique(Qdf$year)) #Vector of unique years
+
+    
+    #Subsetting seasonal forecast
+    if(12 %in% season){ #Winter
+      subdf = Qdf[(Qdf$year == yrs[length(yrs)] & Qdf$month %in% season |
+                     Qdf$year == yrs[length(yrs) - 1] & Qdf$month == 12),] 
+    }else{ #rest of year
+      subdf = Qdf[(Qdf$year == yrs[length(yrs)] & Qdf$month %in% season),]
+    }
+    
+    Qobsv <- as.vector(subdf$Qobs) #Make vector
+    
+    #Qdatesv <- c(Qdatesv,as.character(subdf$Date))
+    
+    if(j == periods[1]){ #Create the list for the first period
+      Qhindlist[[k]]<- Qobsv
+    }else{
+      message('Adding to ',k)
+      #Add to the previous list
+      vec = Qhindlist[[k]]
+      vec2 = c(vec,Qobsv)
+      Qhindlist[[k]]<- vec2
+    }
+  }
+}
+```
+
+Format the hind cast data
+
+```{r}
+#Convert from a list to a mtrix for input into grid format
+mat <- t(sapply(Qhindlist, function(x) as.numeric(unlist(x))))
+
+model_Q_1 <- subsetGrid( mod.samp$uas, years = 1984, season = 12)
+temporalPlot(model_Q_1)
+model_Q_2 <- subsetGrid( mod.samp$uas, years = c(1984:2007), season = c(12,1,2))
+model_Q_3 <- subsetGrid( mod.samp$uas, years = c(2008), season = c(1,2))
+
+#Subsetting hind grid data to same time period as seasonal forecast
+if(12 %in% season){ #Winter
+  hind_Q_1 <- subsetGrid( hind.samp[[1]], years = (syears[1]-1), season = season[1])
+  hind_Q_2 <- subsetGrid( hind.samp[[1]], years = syears[1:(length(syears)-1)], season = season)
+  hind_Q_3 <- subsetGrid( hind.samp[[1]], years = syears[length(syears)], season = season[2:3])
+  
+  #Bind grids by time
+  hind_Q <- bindGrid(hind_Q_1, hind_Q_2, hind_Q_3, dimension = "time")
+}else{ #Rest of year
+  hind_Q <- subsetGrid( hind.samp$uas, years = syears, season = season)
+}
+
+temporalPlot(hind_Q)
+```
+
+Create tercile plot
+
+```{r}
+
+hind_Q$Data <- 
+attr(hind_Q$Data, which = "dimensions") <- c('member', 'time')
+
+
+hind_Q$Variable$varName
+attr(hind_Q$Variable,which = "description") <- 'Discharge'
+attr(hind_Q$Variable,which = "units") <- 'mm/day'
+attr(hind_Q$Variable,which = "longname") <- 'Discharge'
+
+temporalPlot(hind_Q,  xyplot.custom = list(ylim = c(0,0.08)))
+temporalPlot(obs_Q,  xyplot.custom = list(ylim = c(0,0.08)))
+
+checkDim(hind_Q)
+
+tercilePlot(hindcast = hind_Q, obs = obs_Q)
+
+#dim(Qhindmat)
+str(Qhindlist)
+```
+

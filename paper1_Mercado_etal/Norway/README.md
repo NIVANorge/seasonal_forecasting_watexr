@@ -1,0 +1,1 @@
+Norwegian case study

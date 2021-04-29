@@ -1,0 +1,6 @@
+output:
+  time_step: 1
+  time_method: mean
+  time_unit: day
+  variables:
+  - source: temp

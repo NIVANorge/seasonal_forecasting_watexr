@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<config><transports>
+		<transport path="langtjern.db" type="sqlite" />
+	</transports>
+	<executable path="/usr/bin/gotm" />
+	<setup path="../" />
+	<parameters>
+		<parameter file="gotmmean.nml" maximum="0.35" minimum="0.1" namelist="meanflow" variable="alb_ice" />
+		<parameter file="airsea.nml" maximum="1.2" minimum="0.8" namelist="airsea" variable="swr_factor" />
+		<parameter file="airsea.nml" maximum="1.2" minimum="0.8" namelist="airsea" variable="shf_factor" />
+		<parameter file="airsea.nml" maximum="1.1" minimum="0.2" namelist="airsea" variable="wind_factor" />
+		<parameter file="gotmturb.nml" logscale="True" maximum="1e-6" minimum="1e-11" namelist="turb_param" variable="k_min" />
+		<parameter file="obs.nml" maximum="0.4" minimum="0.1" namelist="extinct" variable="A" />
+		<parameter file="obs.nml" maximum="4" minimum="1" namelist="extinct" variable="g2" />
+	</parameters>
+	<observations>
+		<variable modelpath="output.nc" modelvariable="temp" source="./temp_4h.obs" spinupyears="0" />
+	</observations>
+</config>

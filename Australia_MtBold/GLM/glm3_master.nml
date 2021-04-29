@@ -1,0 +1,122 @@
+&glm_setup
+   sim_name = 'GLMSimulation'
+   max_layers = 276
+   min_layer_vol = 0.5
+   min_layer_thick = 0.15
+   max_layer_thick = 1
+   density_model = 1
+   non_avg = .true.
+/
+&mixing
+   surface_mixing = 1
+   coef_mix_conv = 0.2
+   coef_wind_stir = 0.23
+   coef_mix_shear = 0.3
+   coef_mix_turb = 0.51
+   coef_mix_KH = 0.3
+   deep_mixing = 2
+   coef_mix_hyp = 0.5
+   diff = 0
+/
+&morphometry
+   lake_name = 'mt_bold'
+   latitude = -35.12
+   longitude = 138.7
+   bsn_len = 3678
+   bsn_wid = 944
+   crest_elev = 242.1
+   bsn_vals = 83
+   H = 200.6, 201.1, 201.6, 202.1, 202.6, 203.1, 203.6, 204.1, 204.6, 205.1, 205.6, 206.1, 206.6, 207.1, 207.6, 208.1, 208.6, 209.1, 209.6, 210.1, 210.6, 211.1, 211.6, 212.1, 212.6, 213.1, 213.6, 214.1, 214.6, 215.1, 215.6, 216.1, 216.6, 217.1, 217.6, 218.1, 218.6, 219.1, 219.6, 220.1, 220.6, 221.1, 221.6, 222.1, 222.6, 223.1, 223.6, 224.1, 224.6, 225.1, 225.6, 226.1, 226.6, 227.1, 227.6, 228.1, 228.6, 229.1, 229.6, 230.1, 230.6, 231.1, 231.6, 232.1, 232.6, 233.1, 233.6, 234.1, 234.6, 235.1, 235.6, 236.1, 236.6, 237.1, 237.6, 238.1, 238.6, 239.1, 239.6, 240.1, 240.6, 241.1, 242.1
+   A = 0, 5.833110646, 18.10702914, 33.20416156, 51.58026516, 1394.577006, 7818.792861, 19417.24833, 27720.4792, 33551.01933, 46688.43644, 54830.0637, 63167.06514, 70676.89161, 79005.61478, 88374.71127, 97041.73478, 107427.1823, 118579.7529, 129081.5062, 140012.8172, 152577.9386, 164826.9421, 178049.2687, 194905.0745, 212408.4322, 228189.7894, 247215.606, 266122.3233, 282088.5216, 302625.2377, 323258.1189, 343383.7889, 366716.4099, 395638.1714, 425143.8354, 453378.7446, 483848.3321, 511786.9066, 540615.8967, 569235.2606, 600545.756, 631906.7321, 664572.5684, 698666.642, 734939.3963, 770251.1825, 808597.2341, 849340.9565, 888880.5988, 928197.4869, 968025.2338, 1010464.251, 1055617.542, 1100162.711, 1144945.277, 1189839.092, 1235471.98, 1280354.086, 1324520.552, 1371157.459, 1416977.858, 1462163.528, 1506947.724, 1552586.343, 1602452.202, 1653867.296, 1705668.625, 1758164.123, 1810233.183, 1860803.299, 1911627.137, 1964052.526, 2016899.936, 2070122.308, 2124045.899, 2178569.428, 2235491.625, 2294479.109, 2355142.632, 2418261.986, 2483161.413, 2548799.723
+/
+&time
+   timefmt = 2
+   start = '2014-06-01 00:00:00'
+   stop = '2018-03-06 00:00:00'
+   dt = 3600
+   timezone = 0
+   num_days = 150
+/
+&output
+   out_dir = 'output'
+   out_fn = 'output'
+   nsave = 24
+   csv_ovrflw_fname = 'overflow'
+   csv_lake_fname = 'lake'
+/
+&init_profiles
+   lake_depth = 41.5
+   num_depths = 2
+   the_depths = 0, 15
+   the_temps = 12, 12
+   the_sals = 0, 0
+/
+&meteorology
+   met_sw = .true.
+   lw_type = 'LW_IN'
+   rain_sw = .false.
+   atm_stab = 0
+   catchrain = .false.
+   rad_mode = 1
+   albedo_mode = 1
+   cloud_mode = 4
+   fetch_mode = 0
+   subdaily = .false.
+   meteo_fl = 'meteo_file.csv'
+   wind_factor = 1.37
+   sw_factor = 1
+   lw_factor = 1
+   at_factor = 1
+   rh_factor = 1
+   rain_factor = 1
+   ce = 0.0013
+   ch = 0.0013
+   cd = 0.0013
+   rain_threshold = 0.01
+   runoff_coef = 0.3
+/
+&bird_model
+   AP = 973
+   Oz = 0.279
+   WatVap = 1.1
+   AOD500 = 0.033
+   AOD380 = 0.038
+   Albedo = 0.2
+/
+&light
+   light_mode = 0
+   n_bands = 4
+   light_extc = 1, 0.5, 2, 4
+   energy_frac = 0.51, 0.45, 0.035, 0.005
+   Benthic_Imin = 10
+   Kw = 1.5
+/
+&inflow
+   num_inflows = 0
+   names_of_strms = 'Onka'
+   subm_flag = .false.
+   strm_hf_angle = 77.6
+   strmbd_slope = 0.47
+   strmbd_drag = 0.015
+   inflow_factor = 1
+   inflow_fl = 'onka_1973_2018_1day.csv'
+   inflow_varnum = 1
+   inflow_vars = 'FLOW'
+/
+&outflow
+   num_outlet = 0
+   flt_off_sw = .false.
+   outl_elvs = 209
+   bsn_len_outl = 3678
+   bsn_wid_outl = 944
+   outflow_fl = 'outflow.csv'
+   outflow_factor = 1
+   outflow_thick_limit = 1
+   outlet_type = 1
+   single_layer_draw = .true.
+   crest_width = 100
+   crest_factor = 0.61
+/
+&debugging
+   disable_evap = .false.
+/

@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="colour_lag1 <= 48.167\nmse = 343.106\nsamples = 32\nvalue = 39.293"] ;
+1 [label="colour_lag1 <= 26.514\nmse = 67.835\nsamples = 17\nvalue = 25.381"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+5 [label="colour_lag1 <= 22.375\nmse = 14.444\nsamples = 8\nvalue = 18.604"] ;
+1 -> 5 ;
+13 [label="mse = 3.129\nsamples = 5\nvalue = 16.767"] ;
+5 -> 13 ;
+14 [label="mse = 18.296\nsamples = 3\nvalue = 21.667"] ;
+5 -> 14 ;
+6 [label="colour_lag1 <= 32.778\nmse = 38.19\nsamples = 9\nvalue = 31.404"] ;
+1 -> 6 ;
+7 [label="mse = 29.339\nsamples = 5\nvalue = 27.356"] ;
+6 -> 7 ;
+8 [label="mse = 3.148\nsamples = 4\nvalue = 36.465"] ;
+6 -> 8 ;
+2 [label="colour_lag1 <= 57.042\nmse = 187.093\nsamples = 15\nvalue = 55.061"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="colour_lag1 <= 52.096\nmse = 73.808\nsamples = 6\nvalue = 44.178"] ;
+2 -> 3 ;
+11 [label="mse = 81.773\nsamples = 3\nvalue = 47.301"] ;
+3 -> 11 ;
+12 [label="mse = 46.34\nsamples = 3\nvalue = 41.056"] ;
+3 -> 12 ;
+4 [label="colour_lag1 <= 69.59\nmse = 131.027\nsamples = 9\nvalue = 62.316"] ;
+2 -> 4 ;
+9 [label="mse = 154.137\nsamples = 6\nvalue = 65.012"] ;
+4 -> 9 ;
+10 [label="mse = 41.196\nsamples = 3\nvalue = 56.924"] ;
+4 -> 10 ;
+}

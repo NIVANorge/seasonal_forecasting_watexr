@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="TP_prevSummer <= 26.356\nmse = 31.648\nsamples = 34\nvalue = 29.86"] ;
+1 [label="mse = 12.941\nsamples = 6\nvalue = 24.282"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="TP_prevSummer <= 31.473\nmse = 27.563\nsamples = 28\nvalue = 31.055"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="TP_prevSummer <= 28.867\nmse = 12.506\nsamples = 16\nvalue = 29.488"] ;
+2 -> 3 ;
+5 [label="TP_prevSummer <= 27.096\nmse = 13.33\nsamples = 7\nvalue = 32.019"] ;
+3 -> 5 ;
+13 [label="mse = 15.395\nsamples = 3\nvalue = 31.09"] ;
+5 -> 13 ;
+14 [label="mse = 10.648\nsamples = 4\nvalue = 32.716"] ;
+5 -> 14 ;
+6 [label="mse = 3.006\nsamples = 9\nvalue = 27.519"] ;
+3 -> 6 ;
+4 [label="TP_prevSummer <= 33.54\nmse = 39.997\nsamples = 12\nvalue = 33.145"] ;
+2 -> 4 ;
+7 [label="TP_prevSummer <= 32.437\nmse = 30.083\nsamples = 6\nvalue = 35.674"] ;
+4 -> 7 ;
+9 [label="mse = 3.888\nsamples = 3\nvalue = 33.146"] ;
+7 -> 9 ;
+10 [label="mse = 43.496\nsamples = 3\nvalue = 38.202"] ;
+7 -> 10 ;
+8 [label="TP_prevSummer <= 36.75\nmse = 37.116\nsamples = 6\nvalue = 30.615"] ;
+4 -> 8 ;
+11 [label="mse = 12.962\nsamples = 3\nvalue = 29.497"] ;
+8 -> 11 ;
+12 [label="mse = 58.771\nsamples = 3\nvalue = 31.733"] ;
+8 -> 12 ;
+}

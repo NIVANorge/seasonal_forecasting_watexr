@@ -1,0 +1,57 @@
+options(java.parameters = "-Xmx8000m")
+library(loadeR)
+library(loadeR.2nc)
+library(transformeR)
+library(abind)
+
+loginUDG("", "")
+
+# lakes ---------------------------------------------------------
+di <- dataInventory("/home/maialen/Descargas/pctlake.nc4")
+lakes <- loadGridData("/home/maialen/Descargas/pctlake.nc4", var = "PCT_LAKE")
+
+lakes$Data[which(lakes$Data > 0)] <- 1
+lakes$Data[which(lakes$Data != 1)] <- NA
+
+latitudes <- getCoordinates(lakes)$y
+# Para ir de 2 en 2 latitudes (puede petar porque son bastantes variables)
+lats.ind <- split(latitudes, f = sort(rep(seq(1, length(latitudes), by = 2), 2)))
+# Para ir de 1 en 1 latitudes (recomendable)
+lats.ind <- as.list(latitudes)
+
+dataset <- "http://meteo.unican.es/tds5/dodsC/cmip5/ISIMIP/IPSL-CM5A-LR_rcp85_r1i1p1_EWEMBI_landonly.ncml"
+varnames <- names(dataInventory("http://meteo.unican.es/tds5/dodsC/cmip5/ISIMIP/IPSL-CM5A-LR_rcp85_r1i1p1_EWEMBI_landonly.ncml"))
+
+lat.list <- list()
+for (l in 1:length(lats.ind)) {
+  allvars <- lapply(varnames, function(x) loadGridData(dataset = dataset, var = x, latLim = lats.ind[[l]]))
+  lakelat <- subsetGrid(lakes, latLim = lats.ind[[l]])
+  maskdata <- abind(rep(list(lakelat$Data), getShape(allvars[[1]])["time"]), along = 0) 
+  allvars.lake <- lapply (allvars, function(x) {
+    x$data <- x$data * maskdata
+    x
+  })
+  output <- allvars.lake[[1]]
+  for (i in 1:length(getShape(allvars.lake[[1]])["lon"])) {
+    pixel <- lapply(allvars.lake, function(x) subsetDimension(x, dimension = "lon", indices = i)) 
+    #this is the part of the model (I use an example to create a data.frame for a single pixel (rows = time, columns = variables): 
+    pixeldf <- do.call("cbind", lapply(pixel, function(p) p[["Data"]]))
+    output$Data[, i] <- tryCatch({mylakemodel(pixeldf)}, error = function(err){NA})  
+  }
+  grid2nc(data = output, NetCDFOutFile = paste0("mydir/latitude", lats.ind[[l]], ".nc4"), )
+}
+
+# You will get a nc file for each lattitude. Once you have crated all.... 
+# do the following to get a nc files for the whole world divided by decades:
+
+makeAggregatedDataset(source.dir = "mydir", ncml.file = "mydir/mycatalog.ncml",
+                      file.ext = "nc4", aggr.dim = "lat")
+
+
+periods <- list(2006:2010, 2011:2020, 2021:2030, 2031:2040, 2041:2050, 2051:2060, 2061:2070, 2071:2080, 2081:2090, 2091:2100)
+
+var <- names(dataInventory("mydir/mycatalog.ncml"))
+for (i in 1:length(periods)) {
+  data <- loadGridData("mydir/mycatalog.ncml", var = var, years = period[[i]])
+  grid2nc(data, NetCDFOutFile = paste0("modelname_etc_", range(periods[[i]])[1], "-", range(periods[[i]])[2], ".nc4"))
+}

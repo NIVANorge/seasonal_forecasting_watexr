@@ -1,0 +1,12 @@
+output:
+  time_step: 1
+  time_unit: day
+  variables:
+  - source: temp
+  - source: Hice
+  - source: mld_surf
+  - source: mld_bott
+  - source: heat
+  - source: qe
+  - source: qb
+  - source: qh

@@ -1,0 +1,3 @@
+gotm.exe
+
+pause

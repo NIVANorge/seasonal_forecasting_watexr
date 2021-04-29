@@ -1,0 +1,5 @@
+Row	NS_ratio	R_2_diff	RMSE_diff	RMSE_sd_diff	bias_abs_diff
+spring	0	0	NaN	NaN	NaN
+summer	0	1	-0.141535149066464	0.0649939361440355	-0.0784067331935111
+autumn	0	0	NaN	NaN	NaN
+winter	0	0	NaN	NaN	NaN

@@ -1,0 +1,5 @@
+Row	NS	R_2	RMSE	RMSE_sd	bias
+winter	NaN	NaN	NaN	NaN	NaN
+spring	NaN	NaN	NaN	NaN	NaN
+summer	NaN	NaN	NaN	NaN	NaN
+autumn	NaN	NaN	NaN	NaN	NaN

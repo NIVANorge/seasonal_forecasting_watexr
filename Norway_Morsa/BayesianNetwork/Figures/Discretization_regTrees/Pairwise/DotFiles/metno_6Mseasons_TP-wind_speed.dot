@@ -1,0 +1,28 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="wind_speed <= 3.683\nmse = 22.965\nsamples = 38\nvalue = 28.942"] ;
+1 [label="wind_speed <= 3.269\nmse = 17.395\nsamples = 27\nvalue = 30.19"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+3 [label="mse = 8.696\nsamples = 5\nvalue = 32.458"] ;
+1 -> 3 ;
+4 [label="wind_speed <= 3.459\nmse = 17.937\nsamples = 22\nvalue = 29.674"] ;
+1 -> 4 ;
+5 [label="mse = 7.985\nsamples = 5\nvalue = 27.16"] ;
+4 -> 5 ;
+6 [label="wind_speed <= 3.628\nmse = 18.458\nsamples = 17\nvalue = 30.414"] ;
+4 -> 6 ;
+9 [label="mse = 18.826\nsamples = 13\nvalue = 29.877"] ;
+6 -> 9 ;
+10 [label="mse = 13.283\nsamples = 4\nvalue = 32.158"] ;
+6 -> 10 ;
+2 [label="wind_speed <= 3.772\nmse = 23.436\nsamples = 11\nvalue = 25.88"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label="mse = 22.083\nsamples = 5\nvalue = 24.247"] ;
+2 -> 7 ;
+8 [label="wind_speed <= 3.893\nmse = 20.492\nsamples = 6\nvalue = 27.24"] ;
+2 -> 8 ;
+11 [label="mse = 0.005\nsamples = 3\nvalue = 27.068"] ;
+8 -> 11 ;
+12 [label="mse = 40.92\nsamples = 3\nvalue = 27.412"] ;
+8 -> 12 ;
+}

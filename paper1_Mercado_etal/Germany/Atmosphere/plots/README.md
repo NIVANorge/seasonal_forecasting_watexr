@@ -1,0 +1,1 @@
+tercile plots for the atmospheric variables: cc (cloud cover), dp (dew point), pet (potential evaporacion), pr (precipitation), ps (pressure), rlds (incoming longwave radiation), rsds (incoming shortwaver radiation), tas (temperature), tasmax (maximum temperature), tasmin (minimum temperature), uas (horizontal wind) and vas (vertical wind).

@@ -1,0 +1,21 @@
+!&observations
+!   variable = 'dom_DOMb_LAE_in',
+!   file = 'langtjern-inflow-DOC-aquam.dat',
+!   index = 1,
+!   !constant_value = 14,
+!   relax_tau = 1e+15,
+!/
+&observations
+   variable = 'selma_o2_LAE_in',
+   file = '',
+   index = 1,
+   constant_value = 300,
+   relax_tau = 1e+15,
+/
+&observations
+   variable = 'selma_dd_LAE_in',
+   file = '',
+   index = 1,
+   constant_value = 100,
+   relax_tau = 1e+15,
+/

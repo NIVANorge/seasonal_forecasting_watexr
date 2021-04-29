@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="colour_prevSummer <= 34.558\nmse = 271.27\nsamples = 38\nvalue = 40.105"] ;
+1 [label="colour_prevSummer <= 25.924\nmse = 26.469\nsamples = 18\nvalue = 25.285"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+7 [label="colour_prevSummer <= 19.429\nmse = 25.706\nsamples = 9\nvalue = 23.478"] ;
+1 -> 7 ;
+13 [label="mse = 41.299\nsamples = 3\nvalue = 26.575"] ;
+7 -> 13 ;
+14 [label="mse = 10.715\nsamples = 6\nvalue = 21.93"] ;
+7 -> 14 ;
+8 [label="mse = 20.699\nsamples = 9\nvalue = 27.092"] ;
+1 -> 8 ;
+2 [label="colour_prevSummer <= 60.969\nmse = 116.058\nsamples = 20\nvalue = 53.442"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="colour_prevSummer <= 49.378\nmse = 93.311\nsamples = 14\nvalue = 49.323"] ;
+2 -> 3 ;
+9 [label="colour_prevSummer <= 42.28\nmse = 116.022\nsamples = 8\nvalue = 50.938"] ;
+3 -> 9 ;
+11 [label="mse = 39.715\nsamples = 4\nvalue = 46.522"] ;
+9 -> 11 ;
+12 [label="mse = 153.327\nsamples = 4\nvalue = 55.354"] ;
+9 -> 12 ;
+10 [label="mse = 54.908\nsamples = 6\nvalue = 47.169"] ;
+3 -> 10 ;
+4 [label="colour_prevSummer <= 67.209\nmse = 37.179\nsamples = 6\nvalue = 63.053"] ;
+2 -> 4 ;
+5 [label="mse = 25.74\nsamples = 3\nvalue = 67.151"] ;
+4 -> 5 ;
+6 [label="mse = 15.023\nsamples = 3\nvalue = 58.954"] ;
+4 -> 6 ;
+}

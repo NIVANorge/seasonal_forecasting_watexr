@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="chla_prevSummer <= 16.788\nmse = 41.005\nsamples = 34\nvalue = 14.765"] ;
+1 [label="rainy_days_winter <= 122.0\nmse = 11.294\nsamples = 21\nvalue = 11.131"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+5 [label="mse = 2.874\nsamples = 5\nvalue = 7.004"] ;
+1 -> 5 ;
+6 [label="chla_prevSummer <= 12.638\nmse = 6.936\nsamples = 16\nvalue = 12.421"] ;
+1 -> 6 ;
+11 [label="TP <= 29.485\nmse = 3.996\nsamples = 7\nvalue = 13.273"] ;
+6 -> 11 ;
+13 [label="mse = 0.178\nsamples = 3\nvalue = 15.156"] ;
+11 -> 13 ;
+14 [label="mse = 2.205\nsamples = 4\nvalue = 11.861"] ;
+11 -> 14 ;
+12 [label="mse = 8.22\nsamples = 9\nvalue = 11.759"] ;
+6 -> 12 ;
+2 [label="TP <= 37.897\nmse = 33.22\nsamples = 13\nvalue = 20.635"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="chla_prevSummer <= 19.871\nmse = 14.287\nsamples = 10\nvalue = 18.735"] ;
+2 -> 3 ;
+7 [label="mse = 21.461\nsamples = 3\nvalue = 15.454"] ;
+3 -> 7 ;
+8 [label="chla_prevSummer <= 22.475\nmse = 4.622\nsamples = 7\nvalue = 20.141"] ;
+3 -> 8 ;
+9 [label="mse = 1.412\nsamples = 3\nvalue = 22.41"] ;
+8 -> 9 ;
+10 [label="mse = 0.272\nsamples = 4\nvalue = 18.439"] ;
+8 -> 10 ;
+4 [label="mse = 44.21\nsamples = 3\nvalue = 26.967"] ;
+2 -> 4 ;
+}
