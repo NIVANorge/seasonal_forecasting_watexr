@@ -26,27 +26,29 @@ Statistical and process-based models were used to produce seasonal forecasts for
 
 # Case study sites
 
-## Mount Bold reservoir, Southern Autralia
+Click on the case study headers for more information about the individual sites and to access the user-friendly forecasting interfaces developed.
+
+## [Mount Bold reservoir, Southern Autralia](https://nivanorge.github.io/seasonal_forecasting_watexr/)
 **The challenge**: Improve management of the largest reservoir in South Australia to reduce pumping costs and improve water quality.
 
 **Developer and co-developer**: [Dundalk Institute of Technology](https://www.dkit.ie/), [SA Water](https://www.sawater.com.au/) and [University of Adelaide](https://www.adelaide.edu.au/)
 
-## Burrishoole catchment, Ireland
+## [Burrishoole catchment, Ireland](https://nivanorge.github.io/seasonal_forecasting_watexr/)
 **The challenge**: Better understanding and management of diadromous fish stocks, in particular the timing of fish migration.
 
 **Developer and co-developer**: [Marine Institute](https://www.marine.ie/Home/home)
 
-## Sau reservoir, Spain
+## [Sau reservoir, Spain](https://nivanorge.github.io/seasonal_forecasting_watexr/)
 **The challenge**: Improved reservoir management to reduce flooding and improve water quality for drinking water and to meet ecological targets.
 
 **Developer and co-developer**: ICRA, [Catalan Water Agency](http://aca.gencat.cat/ca/inici)
 
-## Lake Vansjø, Norway
+## [Lake Vansjø, Norway](https://nivanorge.github.io/seasonal_forecasting_watexr/)
 **The challenge**: Manage lake water levels and farming practices in the catchment to improve water quality and achieve water quality and ecology targets, including prevention of toxic cyanobacterial blooms.
 
 **Developer and co-developer**: Norwegian Institute for Water Research (NIVA), [Morsa](http://morsa.org/)
 
-## Wupper reservoir, Germany
+## [Wupper reservoir, Germany](https://nivanorge.github.io/seasonal_forecasting_watexr/)
 **The challenge**: Improved reservoir operations to meet requirements for flood protection, recreation and improved water quality both in the reservoir and downstream.
 
 **Developer and co-developer**: UFZ, [WUPPERVERBAND](https://www.wupperverband.de/internet/web.nsf/id/pa_startseite.html)
@@ -54,8 +56,8 @@ Statistical and process-based models were used to produce seasonal forecasts for
 # Papers
 Three papers are currently published/submitted/in preparation:
 
-* Mercado et al. (in review): Workflow description
-* Clayer et al. (in prep): Exploration of the sources of skill in seasonal forecasts
+* [Mercado et al. (in review)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper1_Mercado_etal): Workflow description
+* [Clayer et al. (in prep)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper2_Clayer_etal): Exploration of the sources of skill in seasonal forecasts
 * Jackson-Blake et al. (in prep): Assessment of how useful forecasts are for decision making
 
 # Acknowledgements
