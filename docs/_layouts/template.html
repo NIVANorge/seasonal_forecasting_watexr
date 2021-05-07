@@ -1,0 +1,15 @@
+---
+layout: default
+title: {{ site.name }}
+---
+<!DOCTYPE html>
+<html lang="en-us">
+  <body>
+	<nav>
+		{% for page in site.pages %}
+			<a href={{ page.filename }}>{{ page.title }}</a>
+		{% endfor %}
+	</nav>
+    <p>{{ content }}</p>
+  </body>
+</html>

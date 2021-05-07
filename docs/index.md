@@ -1,3 +1,9 @@
+---
+title: Introduction
+layout: template
+filename: index.md
+--- 
+
 # Introduction
 
 As part of the WATExR project, we have developed tools for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim is for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months.
