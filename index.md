@@ -9,12 +9,6 @@ Forecasting tools were developed for five pilot case sites, one in Australia and
   <img src="Images/LocationMap.jpg" width="400" />
 </p>
 
-# Page contents
-
-<!-- TOC -->
-- [Forecasting methods](#forecasting-methods)
-<!-- /TOC -->
-
 # Forecasting methods
 
 Forecasts were produced by driving freshwater "impact" models using downscaled seasonal climate model forecasts.
@@ -54,8 +48,7 @@ Statistical and process-based models were used to produce seasonal forecasts for
 ## [Lake Vansjø, Norway](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/docs/Norway.md)
 **The challenge**: Manage lake water levels and farming practices in the catchment to improve water quality and achieve water quality and ecology targets, including prevention of toxic cyanobacterial blooms.
 
-**Forecasting tool**: <https://watexr.data.niva.no>
-This was developed using a voila app; the underlying code is in [this GitHub repository](https://github.com/NIVANorge/watexr_voila_app)
+**Forecasting tool**: <https://watexr.data.niva.no>. This was developed using a voila app; the underlying code is in [this GitHub repository](https://github.com/NIVANorge/watexr_voila_app)
 
 **Developer and co-developer**: Norwegian Institute for Water Research ([NIVA](https://www.niva.no/)), [Morsa](http://morsa.org/)
 
@@ -80,11 +73,12 @@ This was developed using a voila app; the underlying code is in [this GitHub rep
 **Main contacts**: Tadhg Moore, Eleanor Jennings
 
 # Papers
-Three papers are currently published/submitted/in preparation:
+Four papers are currently published/submitted/in preparation, and provide details on the workflows developed at each site, as well as lessons learned throughout the project in terms of key opportunities and barriers for seasonal forecasting to support water management:
 
 * [Mercado et al. (in review)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper1_Mercado_etal): A description of the workflows developed to simulate discharge and lake temperature.
 * [Clayer et al. (in prep)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper2_Clayer_etal): Exploration of the sources of skill in seasonal forecasts.
 * [Jackson-Blake et al. (in prep)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper3_JacksonBlake_etal): Assessment of how useful forecasts are for supporting decision making in the water sector.
+* A. French et al. (in prep): Description of workflow for seasonal forecasting of the timing of fish migration, with application of the workflow in the Burrishoole catchment in Ireland.
 
 # Acknowledgements
 This is a contribution of the WATExR project (watexr.eu/), which is part of ERA4CS, an ERA-NET initiated by JPI Climate, and funded by MINECO-AEI (ES), FORMAS (SE), BMBF (DE), EPA (IE), RCN (NO), and IFD (DK), with co-funding by the European Union (Grant 690462). MINECO-AEI funded this research through projects PCIN-2017-062 and PCIN-2017-092.
