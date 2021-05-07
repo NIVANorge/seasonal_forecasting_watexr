@@ -45,7 +45,7 @@ Statistical and process-based models were used to produce seasonal forecasts for
 
 **Main contacts**: Daniel Mercado Bettín, Rafael Marcé
 
-## [Lake Vansjø, Norway](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/docs/Norway.md)
+## [Lake Vansjø, Norway](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/Norway_Morsa#lake-vansj%C3%B8-norway)
 **The challenge**: Manage lake water levels and farming practices in the catchment to improve water quality and achieve water quality and ecology targets, including prevention of toxic cyanobacterial blooms.
 
 **Forecasting tool**: <https://watexr.data.niva.no>. This was developed using a voila app; the underlying code is in [this GitHub repository](https://github.com/NIVANorge/watexr_voila_app)
