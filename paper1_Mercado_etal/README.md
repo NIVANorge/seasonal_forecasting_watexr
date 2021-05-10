@@ -13,7 +13,7 @@ On each one of these folders you will find 3 folder:
 2. Lake
 3. River
 
-In these three folders you can find all the codes, inputs and plots related to the three steps used in the methodology of the paper for each case study. This is an example for the setup used in the Spanish case study, but similar setups were used for the rest of the catchment-lake systems:
+In these three folders you can find all the codes, inputs and plots related to the three steps used in the methodology of the paper for each case study (since calibration plot contains observations, for Australia they are not shown to avoid problems/misunderstandings/issues that could compromise the data provider commercially or reputationally). This is an example for the setup used in the Spanish case study, but similar setups were used for the rest of the catchment-lake systems:
 
 
 <p align="center">
