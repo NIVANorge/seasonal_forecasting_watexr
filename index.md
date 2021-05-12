@@ -13,13 +13,13 @@ Forecasting tools were developed for five pilot case sites, one in Australia and
 Forecasts were produced by driving freshwater "impact" models using downscaled seasonal climate model forecasts.
 
 <p align="center">
-  <img src="Images/steps.jpg" width="200" />
+  <img src="Images/steps.jpg" width="350" />
 </p>
 
-A more detailed flow chart detailing the workflow for producing forecasts for a hindcast period is shown below.
+A more detailed flow chart detailing the workflow for producing forecasts for a hindcast period is shown below (click to enlarge).
 
 <p align="center">
-  <img src="Images/Workflow.png" width="600" />
+  <img src="Images/Workflow.png" width="800" />
 </p>
 
 ## Accessing and processing seasonal climate data
