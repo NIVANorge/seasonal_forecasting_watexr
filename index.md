@@ -2,8 +2,7 @@
 
 As part of the WATExR project, we have developed workflows for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim was for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Seasonal forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months, and have the potential to assist in strategic management of catchments, lakes and reservoirs.
 
-Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe. At most sites, tools were prototypes, and seasonal forecasts were only produced for a historic hindcast period (1993-2016/2019) to evaluate their potential usefulness. However, at several sites there is an intention to continue development to operational tools - see details for the individual Case Study sites below.
-
+Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe. At most sites, seasonal forecasts were only produced for a historic hindcast period (1993-2016/2019) to evaluate their potential usefulness. However, at several sites there is an intention to continue development to operational tools - see details for the individual Case Study sites below.
 
 <p align="center">
   <img src="Images/LocationMap.jpg" width="400" />
@@ -45,7 +44,7 @@ Statistical and process-based models were used to produce seasonal forecasts for
 ## [Sau reservoir, Spain](https://github.com/NIVANorge/seasonal_forecasting_watexr/blob/main/docs/Spain.md)
 **The challenge**: Improved reservoir management to reduce flooding and improve water quality for drinking water and to meet ecological targets.
 
-**Forecasting tool**: A QGIS plugin is under development. Expected first version summer 2021.
+**Forecasting tool**: A QGIS plugin is under development (expected first version summer 2021).
 
 **Developer and co-developer**: [ICRA](https://www.icra.cat/), [Catalan Water Agency](http://aca.gencat.cat/ca/inici)
 
