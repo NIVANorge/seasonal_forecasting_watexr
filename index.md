@@ -1,8 +1,8 @@
 # Introduction
 
-As part of the WATExR project, we have developed tools for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim is for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months.
+As part of the WATExR project, we have developed workflows for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim was for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Seasonal forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months, and have the potential to assist in strategic management of catchments, lakes and reservoirs.
 
-Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe.
+Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe. At most sites, tools were prototypes, and seasonal forecasts were only produced for a historic hindcast period (1993-2016/2019) to evaluate their potential usefulness. However, at several sites there is an intention to continue development to operational tools - see details for the individual Case Study sites below.
 
 
 <p align="center">
@@ -20,7 +20,13 @@ Forecasting tools were developed for five pilot case sites, one in Australia and
 Forecasts were produced by driving freshwater "impact" models using downscaled seasonal climate model forecasts.
 
 <p align="center">
-  <img src="Images/steps.jpg" width="600" />
+  <img src="Images/steps.jpg" width="200" />
+</p>
+
+A more detailed flow chart detailing the workflow for producing forecasts for a hindcast period is shown below.
+
+<p align="center">
+  <img src="Images/Workflow.png" width="600" />
 </p>
 
 ## Accessing and processing seasonal climate data

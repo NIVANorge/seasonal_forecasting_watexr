@@ -1,1 +1,0 @@
-# Forecasting to support reservoir operations in Germany
