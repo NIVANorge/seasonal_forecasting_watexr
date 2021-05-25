@@ -2,6 +2,8 @@
 
 As part of the WATExR project, we have developed workflows for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim was for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Seasonal forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months, and have the potential to assist in strategic management of catchments, lakes and reservoirs.
 
+The project's main webpage is [here](https://watexr.eu/), where you can find out more information about the case study sites, development team, as well as follow our blog. This website hosts the tools and code developed as part of the project, and will remain active after the official project webpage becomes inactive.
+
 Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe. At most sites, seasonal forecasts were only produced for a historic hindcast period (1993-2016/2019) to evaluate their potential usefulness. However, at several sites there is an intention to continue development to operational tools - see details for the individual Case Study sites below.
 
 <p align="center">
