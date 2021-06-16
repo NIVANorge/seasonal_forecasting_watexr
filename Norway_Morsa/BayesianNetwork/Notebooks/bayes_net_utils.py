@@ -45,6 +45,51 @@ def bayes_net_predict(rfile_fpath, sd_fpath, year, chla_prev_summer, colour_prev
 
     return df
 
+def bayes_net_predict_nomet(rfile_fpath, sd_fpath, year, chla_prev_summer, colour_prev_summer,
+                      tp_prev_summer):
+    """ Make predictions given the evidence provided based on a pre-fitted Bayesian network with no met nodes
+        This function is just a thin "wrapper" around the R function named 'bayes_net_predict_nomet' in 'bayes_net_utils.R'. See also bayes_net_predict_operational.
+        
+        NOTE: 'bayes_net_utils.R' must be in the same folder as this file.
+        
+    Args:
+        rfile_fpath:       Str. Filepath to fitted BNLearn network object (.rds file)
+        sd_fpath:          Str. Filepath to csv containing standard deviation info from fitted BN
+        year:              Int. Year for prediction
+        chla_prevSummer:   Float. Chl-a measured from the previous summer  (mg/l)
+        colour_prevSummer: Float. Colour measured from the previous summer (mg Pt/l)
+        TP_prevSummer:     Float. Total P measured from the previous summer (mg/l)
+    
+    Returns:
+        Dataframe with columns 'year', 'node', 'threshold', 'prob_below_threshold',
+       'prob_above_threshold', 'expected_value', 'sd' (standard deviation)
+    """
+    import pandas as pd
+    import rpy2.robjects as ro
+    from rpy2.robjects.packages import importr
+    from rpy2.robjects import pandas2ri
+    from rpy2.robjects.conversion import localconverter
+    
+    # Load R script
+    ro.r.source('bayes_net_utils.R')
+
+    # Call R function with user-specified evidence
+    res = ro.r['bayes_net_predict_nomet'](rfile_fpath, sd_fpath, year, chla_prev_summer, colour_prev_summer,
+                                    tp_prev_summer)
+
+    # Convert back to Pandas df
+    with localconverter(ro.default_converter + pandas2ri.converter):
+        df = ro.conversion.rpy2py(res)
+    
+    # Add 'year' to results as unique identifier
+    df['year'] = int(year)
+    df.reset_index(drop=True, inplace=True)
+    
+    # Add predicted WFD class
+    df['WFD_class'] = df[['threshold','expected_value']].apply(lambda x: discretize([x.threshold], x.expected_value), axis=1)
+
+    return df
+
 def bayes_net_predict_operational(rfile_fpath, year, chla_prev_summer, colour_prev_summer,
                                   tp_prev_summer):
     """ Make predictions given the evidence provided based on the pre-fitted Bayesian network.
