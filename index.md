@@ -2,13 +2,15 @@
 
 As part of the WATExR project, we have developed workflows for seasonal forecasting of river discharge, lake water temperature, ecology and fish phenology. The aim was for stakeholders to have access to probabilistic aquatic forecasts driven by state-of-the-art seasonal climate projections. Seasonal forecasts provide an indication of the expected average environmental conditions during the coming 1 to 9 months, and have the potential to assist in strategic management of catchments, lakes and reservoirs.
 
-The project's main webpage is [here](https://watexr.eu/), where you can find out more information about the case study sites, development team, as well as follow our blog. This website hosts the tools and code developed as part of the project, and will remain active after the official project webpage becomes inactive.
+The project's current webpage is [here](https://watexr.eu/), where you can find out more information about the case study sites, development team, as well as follow our blog. This website hosts the tools and code developed as part of the project, and will remain active after the official project webpage becomes inactive.
 
 Forecasting tools were developed for five pilot case sites, one in Australia and four in Europe. At most sites, seasonal forecasts were only produced for a historic hindcast period (1993-2016/2019) to evaluate their potential usefulness. However, at several sites there is an intention to continue development to operational tools - see details for the individual Case Study sites below.
 
 <p align="center">
   <img src="Images/LocationMap.jpg" width="400" />
 </p>
+
+Watch this [short video](https://www.youtube.com/watch?v=wrVjuSdV0V8) for an introduction to the project.
 
 # Forecasting methods
 
@@ -79,13 +81,21 @@ Statistical and process-based models were used to produce seasonal forecasts for
 
 **Main contacts**: Tadhg Moore, Eleanor Jennings
 
-# Papers
-Four papers are currently published/submitted/in preparation, and provide details on the workflows developed at each site, as well as lessons learned throughout the project in terms of key opportunities and barriers for seasonal forecasting to support water management:
+# To find out more...
 
-* [Mercado et al. (in review)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper1_Mercado_etal): A description of the workflows developed to simulate discharge and lake temperature.
+## WATExR webinar
+
+During the last year of the project, we organized a webinar (February 2021) in which we introduced the aims of the project and showcased some of the main outcomes and results. The webinar included a round table with stakeholders to discuss opportunities and limitations of the use of seasonal forecasting to support water management. The complete recording is available at http://u.pc.cd/3MNctalK.
+
+## Scientific papers
+A number of papers are currently published/submitted, and provide details on the workflows developed at each site, as well as lessons learned throughout the project in terms of key opportunities and barriers for seasonal forecasting to support water management. All will be published open access:
+
+* [Mercado et al. (2021)](https://www.sciencedirect.com/science/article/pii/S004313542100484X?via%3Dihub), "Forecasting water temperature in lakes and reservoirs using seasonal climate prediction", *Water Research*: A description of the workflows developed to forecast discharge and lake temperature.
 * [Clayer et al. (in prep)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper2_Clayer_etal): Exploration of the sources of skill in seasonal forecasts.
-* [Jackson-Blake et al. (in prep)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper3_JacksonBlake_etal): Assessment of how useful forecasts are for supporting decision making in the water sector.
-* A. French et al. (in prep): Description of workflow for seasonal forecasting of the timing of fish migration, with application of the workflow in the Burrishoole catchment in Ireland.
+* [Jackson-Blake et al. (submitted)](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/paper3_JacksonBlake_etal): Assessment of how useful forecasts are for supporting decision making in the water sector.
+
+## Deliverables
+Deliverables produced during the course of the project are available in [this folder](https://github.com/NIVANorge/seasonal_forecasting_watexr/tree/main/Deliverables).
 
 # Acknowledgements
 This is a contribution of the WATExR project (watexr.eu/), which is part of ERA4CS, an ERA-NET initiated by JPI Climate, and funded by MINECO-AEI (ES), FORMAS (SE), BMBF (DE), EPA (IE), RCN (NO), and IFD (DK), with co-funding by the European Union (Grant 690462). MINECO-AEI funded this research through projects PCIN-2017-062 and PCIN-2017-092.
