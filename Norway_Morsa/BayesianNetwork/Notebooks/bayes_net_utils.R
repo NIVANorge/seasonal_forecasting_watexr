@@ -62,7 +62,6 @@ bayes_net_predict <- function(rfile_fpath, sd_fpath, year, chla_prevSummer, colo
 
         # If node is cyano, then remove the boxcox transformation before adding expected value to list
         if (node == "cyano") {
-            # sigma = subset(sd_predictedNodes, node == "cyano")$sd
 
             # Without bias-adjustment, to estimate the median
             # pred = (pred*0.1 + 1)**(1/0.1) # 0.1 is lambda value chosen in transformation
@@ -306,7 +305,7 @@ bayes_net_predict_operational <- function(rfile_fpath,
     # Nodes to use when making predictions
     nodes_to_use = list('TP' = c('TP_prevSummer', 'chla_prevSummer'),
                         'colour' = c('colour_prevSummer'),
-                        'cyano' = c("chla_prevSummer","TP_prevSummer","colour_prevSummer"))
+                        'cyano' = c("chla_prevSummer", "TP_prevSummer", "colour_prevSummer"))
 
     set.seed(1)
 
@@ -323,8 +322,7 @@ bayes_net_predict_operational <- function(rfile_fpath,
                       )
 
         # If node is cyano, then remove the boxcox transformation before adding expected value to list
-        if (node=="cyano") {
-            # sigma = subset(sd_predictedNodes, node == "cyano")$sd
+        if (node == "cyano") {
 
             # Without bias-adjustment, to estimate the median
             # pred = (pred*0.1 + 1)**(1/0.1) # 0.1 is lambda value chosen in transformation
@@ -337,7 +335,7 @@ bayes_net_predict_operational <- function(rfile_fpath,
 
     # Sort alphabetically
     expectedValue_li = expectedValue_li[order(names(expectedValue_li))]
-    
+
     # Thresholds to use in classification
     boundaries_list = list('TP' = 29.5,     # Middle of 'Moderate' class
                            'colour' = 48.0, # 66th percentile (i.e. upper tercile). No management implications
@@ -358,7 +356,7 @@ bayes_net_predict_operational <- function(rfile_fpath,
         boundary = unlist(boundaries_list[node], use.names=FALSE)
 
         # If cyanomax, apply boxcox transformation with lambda=0.1 to boundary first
-        if (node=='cyano') {
+        if (node == 'cyano') {
             boundary = (boundary^0.1 - 1) / 0.1
         }
 
