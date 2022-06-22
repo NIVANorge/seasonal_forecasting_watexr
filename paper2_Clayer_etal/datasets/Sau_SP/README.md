@@ -2,6 +2,6 @@
 
 Comprising :
 
-atmospheric: tas, tp (or pr), tas_max, tas_min,  rsds (no obsevations), wind (no observations), hurs (no observations).
+atmospheric: tas, tp (or pr), tas_max, tas_min,  rsds, wind, hurs.
 inflow: Q (discharge)
 reservoir: surface and bottom temperature.
